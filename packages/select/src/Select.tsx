@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef, ForwardedRef } from 'react';
+import React, { useState, useRef, useEffect, forwardRef, ForwardedRef, useImperativeHandle } from 'react';
 import styles from './Select.css';
 import { useTheme } from '@zone-ui/theme-provider';
 import { Button } from '@zone-ui/button';

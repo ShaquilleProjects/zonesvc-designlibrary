@@ -36,6 +36,8 @@ export const Input = forwardRef(({
   suffix,
   error,
   className = '',
+  value,
+  onChange,
   ...props
 }: InputProps, ref: ForwardedRef<InputRef>) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -46,6 +48,22 @@ export const Input = forwardRef(({
     },
   }));
 
+  const inputProps: any = {
+    ref: inputRef,
+    className: styles.input__input,
+    ...props,
+  };
+  if (value !== undefined) {
+    inputProps.value = value;
+    if (onChange) {
+      inputProps.onChange = onChange;
+    } else {
+      inputProps.readOnly = true;
+    }
+  } else {
+    inputProps.defaultValue = props.defaultValue;
+  }
+
   return (
     <div className={`${styles.input} ${className}`}>
       {label && (
@@ -53,11 +71,7 @@ export const Input = forwardRef(({
       )}
       <div className={styles.input__wrapper}>
         {prefix && <span className={styles.input__prefix}>{prefix}</span>}
-        <input
-          ref={inputRef}
-          className={styles.input__input}
-          {...props}
-        />
+        <input {...inputProps} />
       </div>
       {suffix && <span className={styles.input__suffix}>{suffix}</span>}
       {error && <span className={styles.input__error}>{error}</span>}

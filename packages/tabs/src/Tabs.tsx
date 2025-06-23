@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './Tabs.css?inline';
-import { useTheme } from '../../theme-provider';
+import { useTheme } from '@zone-ui/theme-provider';
 
 interface TabProps {
   title: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Badge.css';
-import { useTheme } from '../../theme-provider';
+import { useTheme } from '@zone-ui/theme-provider';
 
 interface BadgeProps {
   type?: 'primary' | 'success' | 'warning' | 'danger' | 'info' | 'secondary';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Modal.css';
 import { useTheme } from '../../theme-provider';
-import { Button } from "@zone-ui/button";"
+import { Button } from "@zone-ui/button";
 import { X } from 'lucide-react';
 
 interface ModalProps {

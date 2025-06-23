@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 
 interface ThemeContextType {
   theme: {
@@ -22,7 +22,11 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export type ThemeProviderProps = {
+  children: ReactNode;
+};
+
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const theme = {
     colors: {
       primary: '#0070f3',
@@ -39,6 +43,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     spacing: {
       unit: '0.25rem',
     },
+  };
+
+  // Build CSS variables string
+  const cssVars = {
+    '--zui-primary': theme.colors.primary,
+    '--zui-secondary': theme.colors.secondary,
+    '--zui-danger': theme.colors.danger,
+    '--zui-success': theme.colors.success,
+    '--zui-warning': theme.colors.warning,
+    '--zui-font-family': theme.typography.fontFamily,
+    '--zui-font-size-base': theme.typography.fontSize,
+    '--zui-line-height': theme.typography.lineHeight.toString(),
+    '--zui-space-unit': theme.spacing.unit,
   };
 
   return (
@@ -61,7 +78,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
           --zui-space-unit: ${theme.spacing.unit};
         }
       `}</style>
-      {children}
+      <div style={cssVars as React.CSSProperties}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }

@@ -1,7 +1,5 @@
 import React from 'react';
-import styles from './Switch.css?inline';
-import { useTheme } from '@zone-ui/theme-provider';
-import type { Theme } from '@zone-ui/theme-provider';
+import styles from './Switch.css';
 
 export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -25,18 +23,9 @@ export function Switch({
   disabled = false,
   required = false,
   ariaDescribedBy,
+  style,
   ...props
 }: SwitchProps) {
-  const theme = useTheme();
-  const cssVariables = theme.cssVariables;
-  const style: React.CSSProperties = {
-    '--zui-space-unit': cssVariables['zui-space-unit'],
-    '--zui-font-family': cssVariables['zui-font-family'],
-    '--zui-font-size-base': cssVariables['zui-font-size-base'],
-    '--zui-line-height': cssVariables['zui-line-height'],
-    '--zui-secondary': cssVariables['zui-secondary']
-  } as React.CSSProperties;
-
   const classes = [
     styles.switch,
     className,

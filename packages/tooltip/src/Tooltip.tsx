@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './Tooltip.css';
-import { useTheme } from '../../theme-provider';
+import { useTheme } from '@zone-ui/theme-provider';
 
 interface TooltipProps {
   children: React.ReactElement;

@@ -1,12 +1,12 @@
-import React from 'react';
-import styles from './Button.css?inline';
-import { useTheme } from '@zone-ui/theme-provider';
+import { useTheme } from '../../theme-provider/src/index';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
-  size?: 'small' | 'large';
+  size?: 'small' | 'medium' | 'large';
   loading?: boolean;
   children: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
 }
 
 export function Button({
@@ -20,10 +20,10 @@ export function Button({
   const theme = useTheme();
 
   const classNames = [
-    styles.button,
-    styles[`button--${variant}`],
-    size !== 'medium' && styles[`button--${size}`],
-    loading && styles['button--loading'],
+    'button',
+    `button--${variant}`,
+    size !== 'medium' && `button--${size}`,
+    loading && 'button--loading',
     className,
   ].filter(Boolean).join(' ');
 
@@ -35,7 +35,7 @@ export function Button({
     >
       {children}
       {loading && (
-        <span className={styles['button--loading']} />
+        <span className="button--loading" />
       )}
     </button>
   );

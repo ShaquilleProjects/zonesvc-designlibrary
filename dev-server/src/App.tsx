@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { ThemeProvider } from '../../packages/theme-provider/src';
+import { ThemeProvider } from '../../packages/theme-provider/src/ThemeProvider';
 import { Button } from '../../packages/button/src/Button';
 import { Select } from '../../packages/select/src/Select';
-import { Accordion, AccordionItem } from '../../packages/accordion/src/Accordion';
 import { Card } from '../../packages/card/src/Card';
 import { Alert } from '../../packages/alert/src/Alert';
 import { Badge } from '../../packages/badge/src/Badge';
@@ -22,303 +21,89 @@ import { Tooltip } from '../../packages/tooltip/src/Tooltip';
 import { Spinner } from '../../packages/spinner/src/Spinner';
 import { Stepper } from '../../packages/stepper/src/Stepper';
 import { Table } from '../../packages/table/src/Table';
+import '../../packages/button/src/Button.css';
+
+const COMPONENTS = [
+  { key: 'button', label: 'Button' },
+  { key: 'alert', label: 'Alert' },
+  { key: 'badge', label: 'Badge' },
+  { key: 'card', label: 'Card' },
+  { key: 'checkbox', label: 'Checkbox' },
+  { key: 'input', label: 'Input' },
+  { key: 'modal', label: 'Modal' },
+  { key: 'select', label: 'Select' },
+  { key: 'switch', label: 'Switch' },
+  { key: 'tooltip', label: 'Tooltip' },
+  // Add more components here
+];
 
 const App: React.FC = () => {
+  const [selectedComponent, setSelectedComponent] = useState('button');
+
+  // Button playground state
   const [buttonVariant, setButtonVariant] = useState<'primary' | 'secondary' | 'ghost' | 'danger'>('primary');
-  const [buttonSize, setButtonSize] = useState<'small' | 'large'>('large');
+  const [buttonSize, setButtonSize] = useState<'small' | 'medium' | 'large'>('medium');
   const [buttonLoading, setButtonLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [accordionOpen, setAccordionOpen] = useState(false);
-  const [alertShow, setAlertShow] = useState(false);
-  const [checkboxChecked, setCheckboxChecked] = useState(false);
-  const [datepickerSelectedDate, setDatepickerSelectedDate] = useState<Date | null>(null);
-  const [selectSelectedOption, setSelectSelectedOption] = useState<string | number>('');
-  const [radioOption, setRadioOption] = useState<string>('');
-  const [modalShow, setModalShow] = useState(false);
-  const [drawerShow, setDrawerShow] = useState(false);
-  const [tooltipShow, setTooltipShow] = useState(false);
-  const [sidebarShow, setSidebarShow] = useState(false);
-  const [switchChecked, setSwitchChecked] = useState(false);
-  const [progressShow, setProgressShow] = useState(false);
-  const [skeletonShow, setSkeletonShow] = useState(false);
-  const [activeTab, setActiveTab] = useState('tab1');
-  const [inputValue, setInputValue] = useState('');
-  const tabs = [
-    { id: 'tab1', title: 'Tab 1' },
-    { id: 'tab2', title: 'Tab 2' },
-    { id: 'tab3', title: 'Tab 3' }
-  ];
+  const [buttonChildren, setButtonChildren] = useState('Click me');
 
-  return (
-    <ThemeProvider>
-      <div className="app-container">
-        <div className="components-wrapper">
-          <div className="sidebar">
-            <div className="sidebar-header">
-              <h1>Zone UI Components</h1>
-            </div>
-            <nav className="sidebar-nav">
-              <ul>
-                <li>
-                  <Button variant="primary" onClick={() => setButtonVariant('primary')}>
-                    Button
-                  </Button>
-                </li>
-                <li>
-                  <Button variant="secondary" onClick={() => setButtonVariant('secondary')}>
-                    Button
-                  </Button>
-                </li>
-                <li>
-                  <Button variant="ghost" onClick={() => setButtonVariant('ghost')}>
-                    Button
-                  </Button>
-                </li>
-                <li>
-                  <Button variant="danger" onClick={() => setButtonVariant('danger')}>
-                    Button
-                  </Button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div className="main-content">
-            <div className="component-section">
-              <h2>Button</h2>
-              <div className="controls">
-                <Select
-                  value={buttonVariant}
-                  onChange={(value: string | number) => setButtonVariant(value as 'primary' | 'secondary' | 'ghost' | 'danger')}
-                  options={[
-                    { value: 'primary', label: 'Primary' },
-                    { value: 'secondary', label: 'Secondary' },
-                    { value: 'ghost', label: 'Ghost' },
-                    { value: 'danger', label: 'Danger' }
-                  ]}
-                />
-                <Select
-                  value={buttonSize}
-                  onChange={(value: string | number) => setButtonSize(value as typeof buttonSize)}
-                  options={[
-                    { value: 'small', label: 'Small' },
-                    { value: 'large', label: 'Large' }
-                  ]}
-                />
-                <Checkbox
-                  label="Loading"
-                  checked={buttonLoading}
-                  onChange={(e) => setButtonLoading(e.target.checked)}
-                />
-                <Checkbox
-                  label="Disable Button"
-                  checked={buttonDisabled}
-                  onChange={(e) => setButtonDisabled(e.target.checked)}
-                />
-              </div>
-              <div className="demo">
-                <Button
-                  variant={buttonVariant}
-                  size={buttonSize}
-                  loading={buttonLoading}
-                  disabled={buttonDisabled}
-                  onClick={() => alert('Button clicked!')}
-                >
-                  Click me
-                </Button>
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Accordion</h2>
-              <div className="controls">
-                <Checkbox
-                  label="Open Accordion"
-                  checked={accordionOpen}
-                  onChange={(e) => setAccordionOpen(e.target.checked)}
-                />
-              </div>
-              <div className="demo">
-                <Accordion open={accordionOpen}>
-                  <AccordionItem title="Accordion Item 1">
-                    <p>This is the content of the first accordion item.</p>
-                  </AccordionItem>
-                  <AccordionItem title="Accordion Item 2">
-                    <p>This is the content of the second accordion item.</p>
-                  </AccordionItem>
-                </Accordion>
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Alert</h2>
-              <div className="controls">
-                <Checkbox
-                  label="Show Alert"
-                  checked={alertShow}
-                  onChange={(e) => setAlertShow(e.target.checked)}
-                />
-              </div>
-              <div className="demo">
-                {alertShow && (
-                  <Alert type="success" description="This is a success alert!" />
-                )}
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Badge</h2>
-              <div className="demo">
-                <Badge type="primary">Primary</Badge>
-                <Badge type="success">Success</Badge>
-                <Badge type="warning">Warning</Badge>
-                <Badge type="danger">Danger</Badge>
-                <Badge type="info">Info</Badge>
-                <Badge type="secondary">Secondary</Badge>
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Breadcrumb</h2>
-              <div className="demo">
-                <Breadcrumb
-                  items={[
-                    { title: "Home", href: "#" },
-                    { title: "Library", href: "#" },
-                    { title: "Data", href: "#" }
-                  ]}
-                />
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Card</h2>
-              <div className="demo">
-                <Card
-                  title="Card Title"
-                  actions={<Badge type="success">New</Badge>}
-                >
-                  <p>This is the card body content.</p>
-                  <Button variant="primary">Action</Button>
-                </Card>
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Checkbox</h2>
-              <div className="controls">
-                <Checkbox
-                  label="Checkbox"
-                  checked={checkboxChecked}
-                  onChange={(e) => setCheckboxChecked(e.target.checked)}
-                />
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Datepicker</h2>
-              <div className="controls">
-                <Datepicker
-                  value={datepickerSelectedDate}
-                  onChange={setDatepickerSelectedDate}
-                  label="Select Date"
-                />
-              </div>
-            </div>
-            <div className="component-section">
-              <h2>Select</h2>
-              <div className="controls">
-                <Select
-                  value={selectSelectedOption}
-                  onChange={(value: string | number) => setSelectSelectedOption(value as string)}
-                  options={[
-                    { value: 'option1', label: 'Option 1' },
-                    { value: 'option2', label: 'Option 2' },
-                    { value: 'option3', label: 'Option 3' }
-                  ]}
-                />
-              </div>
-            </div>
-            <div className="component-section">
-            </div>
-            <div className="component-section">
-              <h2>Modal</h2>
-              <div className="controls">
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                  Open Modal
-                </Button>
-                <div className="button-variants">
-                  <Button variant="secondary" onClick={() => setButtonVariant('secondary')}>
-                    Button
-                  </Button>
-                  <Button variant="ghost" onClick={() => setButtonVariant('ghost')}>
-                    Button
-                  </Button>
-                  <Button variant="danger" onClick={() => setButtonVariant('danger')}>
-                    Button
-                  </Button>
-                </div>
-              </div>
-        </div>
-        <div className="main-content">
+  // Add state for other components as needed
+
+  // Add state for each component playground
+  const [alertType, setAlertType] = useState('primary');
+  const [alertTitle, setAlertTitle] = useState('Alert Title');
+  const [alertDescription, setAlertDescription] = useState('This is an alert.');
+  const [badgeType, setBadgeType] = useState('primary');
+  const [badgeLabel, setBadgeLabel] = useState('Badge');
+  const [cardTitle, setCardTitle] = useState('Card Title');
+  const [cardContent, setCardContent] = useState('This is card content.');
+  const [checkboxLabel, setCheckboxLabel] = useState('Check me');
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [inputLabel, setInputLabel] = useState('Input Label');
+  const [inputValue, setInputValue] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalTitle, setModalTitle] = useState('Modal Title');
+  const [modalContent, setModalContent] = useState('This is modal content.');
+  const [selectValue, setSelectValue] = useState('option1');
+  const [switchChecked, setSwitchChecked] = useState(false);
+  const [tooltipContent, setTooltipContent] = useState('Tooltip text');
+
+  function renderPlayground() {
+    switch (selectedComponent) {
+      case 'button':
+        return (
           <div className="component-section">
-            <h2>Button</h2>
+            <h2>Button Playground</h2>
             <div className="controls">
-              <Select
-                value={buttonVariant}
-                options={[
-                  { value: 'secondary', label: 'Secondary' },
-                  { value: 'ghost', label: 'Ghost' },
-                  { value: 'danger', label: 'Danger' }
-                ]}
-              />
-            </div>
-          </div>
-        </div>
-        </div>
-        <div className="main-content">
-          <div className="component-section">
-            <h2>Button</h2>
-            <div className="controls">
-              <Select
-                value={buttonVariant}
-                onChange={(value: string | number) => setSelectSelectedOption(value as string)}
-                options={[
-                  { label: 'Default', value: 'default' },
-                  { label: 'Primary', value: 'primary' },
-                  { label: 'Secondary', value: 'secondary' },
-                  { label: 'Ghost', value: 'ghost' },
-                  { label: 'Danger', value: 'danger' }
-                ]}
-              />
-            </div>
-          </div>
-        </div>
-        </div>
-        <div className="main-content">
-          <div className="component-section">
-            <h2>Button</h2>
-            <div className="controls">
-              <Select
-                value={buttonVariant}
-                onChange={(value: string | number) => setSelectSelectedOption(value as string)}
-                options={[
-                  { value: 'primary', label: 'Primary' },
-                  { value: 'secondary', label: 'Secondary' },
-                  { value: 'ghost', label: 'Ghost' },
-                  { value: 'danger', label: 'Danger' }
-                ]}
-              />
-              <Select
-                value={buttonSize}
-                  onChange={(value: string | number) => setButtonSize(value as typeof buttonSize)}
-                options={[
-                  { value: 'small', label: 'Small' },
-                  { value: 'large', label: 'Large' }
-                ]}
-              />
-              <Checkbox
-                label="Loading"
-                checked={buttonLoading}
-                onChange={(e) => setButtonLoading(e.target.checked)}
-              />
-              <Checkbox
-                label="Disable Button"
-                checked={buttonDisabled}
-                onChange={(e) => setButtonDisabled(e.target.checked)}
-              />
+              <label>
+                Variant:
+                <select value={buttonVariant} onChange={e => setButtonVariant(e.target.value as any)}>
+                  <option value="primary">Primary</option>
+                  <option value="secondary">Secondary</option>
+                  <option value="ghost">Ghost</option>
+                  <option value="danger">Danger</option>
+                </select>
+              </label>
+              <label>
+                Size:
+                <select value={buttonSize} onChange={e => setButtonSize(e.target.value as any)}>
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </label>
+              <label>
+                <input type="checkbox" checked={buttonLoading} onChange={e => setButtonLoading(e.target.checked)} />
+                Loading
+              </label>
+              <label>
+                <input type="checkbox" checked={buttonDisabled} onChange={e => setButtonDisabled(e.target.checked)} />
+                Disabled
+              </label>
+              <label>
+                Label:
+                <input type="text" value={buttonChildren} onChange={e => setButtonChildren(e.target.value)} />
+              </label>
             </div>
             <div className="demo">
               <Button
@@ -326,365 +111,350 @@ const App: React.FC = () => {
                 size={buttonSize}
                 loading={buttonLoading}
                 disabled={buttonDisabled}
-                onClick={() => alert('Button clicked!')}
               >
-                Click me
+                {buttonChildren}
               </Button>
             </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+                {renderButtonCode({
+                  variant: buttonVariant,
+                  size: buttonSize,
+                  loading: buttonLoading,
+                  disabled: buttonDisabled,
+                  children: buttonChildren,
+                })}
+              </pre>
+            </div>
           </div>
+        );
+      case 'alert':
+        return (
           <div className="component-section">
-            <h2>Accordion</h2>
+            <h2>Alert Playground</h2>
             <div className="controls">
-              <Checkbox
-                label="Open Accordion"
-                checked={accordionOpen}
-                onChange={(e) => setAccordionOpen(e.target.checked)}
-              />
+              <label>
+                Type:
+                <select value={alertType} onChange={e => setAlertType(e.target.value)}>
+                  <option value="primary">Primary</option>
+                  <option value="success">Success</option>
+                  <option value="warning">Warning</option>
+                  <option value="danger">Danger</option>
+                  <option value="info">Info</option>
+                </select>
+              </label>
+              <label>
+                Title:
+                <input type="text" value={alertTitle} onChange={e => setAlertTitle(e.target.value)} />
+              </label>
+              <label>
+                Description:
+                <input type="text" value={alertDescription} onChange={e => setAlertDescription(e.target.value)} />
+              </label>
             </div>
             <div className="demo">
-              <Accordion open={accordionOpen}>
-                <AccordionItem title="Accordion Item 1">
-                  <p>This is the content of the first accordion item.</p>
-                </AccordionItem>
-                <AccordionItem title="Accordion Item 2">
-                  <p>This is the content of the second accordion item.</p>
-                </AccordionItem>
-              </Accordion>
+              <Alert type={alertType} title={alertTitle} description={alertDescription} />
+            </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Alert } from '@zone-ui/alert';
+
+<Alert
+  type="${alertType}"
+  title="${alertTitle}"
+  description="${alertDescription}"
+/>`}
+              </pre>
             </div>
           </div>
+        );
+      case 'badge':
+        return (
           <div className="component-section">
-            <h2>Alert</h2>
+            <h2>Badge Playground</h2>
             <div className="controls">
-              <Checkbox
-                label="Show Alert"
-                checked={alertShow}
-                onChange={(e) => setAlertShow(e.target.checked)}
-              />
+              <label>
+                Type:
+                <select value={badgeType} onChange={e => setBadgeType(e.target.value)}>
+                  <option value="primary">Primary</option>
+                  <option value="success">Success</option>
+                  <option value="warning">Warning</option>
+                  <option value="danger">Danger</option>
+                  <option value="info">Info</option>
+                  <option value="secondary">Secondary</option>
+                </select>
+              </label>
+              <label>
+                Label:
+                <input type="text" value={badgeLabel} onChange={e => setBadgeLabel(e.target.value)} />
+              </label>
             </div>
             <div className="demo">
-              {alertShow && (
-                <Alert type="success" description="This is a success alert!" />
-              )}
+              <Badge type={badgeType}>{badgeLabel}</Badge>
+            </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Badge } from '@zone-ui/badge';
+
+<Badge type="${badgeType}">
+  ${badgeLabel}
+</Badge>`}
+              </pre>
             </div>
           </div>
+        );
+      case 'card':
+        return (
           <div className="component-section">
-            <h2>Badge</h2>
-            <div className="demo">
-              <Badge type="primary">Primary</Badge>
-              <Badge type="success">Success</Badge>
-              <Badge type="warning">Warning</Badge>
-              <Badge type="danger">Danger</Badge>
-              <Badge type="info">Info</Badge>
-              <Badge type="secondary">Secondary</Badge>
-            </div>
-          </div>
-          <div className="component-section">
-            <h2>Breadcrumb</h2>
-            <div className="demo">
-              <Breadcrumb
-                items={[
-                  { title: "Home", href: "#" },
-                  { title: "Library", href: "#" },
-                  { title: "Data", href: "#" }
-                ]}
-              />
-            </div>
-          </div>
-          <div className="component-section">
-            <h2>Card</h2>
-            <div className="demo">
-              <Card 
-                title="Card Title" 
-                actions={
-                  <>
-                    <Badge type="success">New</Badge>
-                    <Button variant="primary">Action</Button>
-                  </>
-                }
-              >
-                  <p>This is the card body content.</p>
-              </Card>
-            </div>
-          </div>
-          <div className="component-section">
-            <h2>Checkbox</h2>
+            <h2>Card Playground</h2>
             <div className="controls">
-              <Checkbox
-                label="Checkbox"
-                checked={checkboxChecked}
-                onChange={(e) => setCheckboxChecked(e.target.checked)}
-              />
+              <label>
+                Title:
+                <input type="text" value={cardTitle} onChange={e => setCardTitle(e.target.value)} />
+              </label>
+              <label>
+                Content:
+                <input type="text" value={cardContent} onChange={e => setCardContent(e.target.value)} />
+              </label>
+            </div>
+            <div className="demo">
+              <Card title={cardTitle}>{cardContent}</Card>
+            </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Card } from '@zone-ui/card';
+
+<Card title="${cardTitle}">
+  ${cardContent}
+</Card>`}
+              </pre>
             </div>
           </div>
+        );
+      case 'checkbox':
+        return (
           <div className="component-section">
-            <h2>Datepicker</h2>
+            <h2>Checkbox Playground</h2>
             <div className="controls">
-              <Datepicker
-                value={datepickerSelectedDate}
-                onChange={setDatepickerSelectedDate}
-              />
+              <label>
+                Label:
+                <input type="text" value={checkboxLabel} onChange={e => setCheckboxLabel(e.target.value)} />
+              </label>
+              <label>
+                <input type="checkbox" checked={checkboxChecked} onChange={e => setCheckboxChecked(e.target.checked)} />
+                Checked
+              </label>
+            </div>
+            <div className="demo">
+              <Checkbox label={checkboxLabel} checked={checkboxChecked} onChange={e => setCheckboxChecked(e.target.checked)} />
+            </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Checkbox } from '@zone-ui/checkbox';
+
+<Checkbox label="${checkboxLabel}" checked={${checkboxChecked}} />`}
+              </pre>
             </div>
           </div>
+        );
+      case 'input':
+        return (
           <div className="component-section">
-            <h2>Select</h2>
+            <h2>Input Playground</h2>
             <div className="controls">
+              <label>
+                Label:
+                <input type="text" value={inputLabel} onChange={e => setInputLabel(e.target.value)} />
+              </label>
+              <label>
+                Value:
+                <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} />
+              </label>
+            </div>
+            <div className="demo">
+              <Input label={inputLabel} value={inputValue} onChange={e => setInputValue(e.target.value)} />
+            </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Input } from '@zone-ui/input';
+
+<Input label="${inputLabel}" value="${inputValue}" />`}
+              </pre>
+            </div>
+          </div>
+        );
+      case 'modal':
+        return (
+          <div className="component-section">
+            <h2>Modal Playground</h2>
+            <div className="controls">
+              <label>
+                Title:
+                <input type="text" value={modalTitle} onChange={e => setModalTitle(e.target.value)} />
+              </label>
+              <label>
+                Content:
+                <input type="text" value={modalContent} onChange={e => setModalContent(e.target.value)} />
+              </label>
+              <button type="button" onClick={() => setModalOpen(true)} className="button button--primary">Open Modal</button>
+            </div>
+            <div className="demo">
+              <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title={modalTitle}>
+                {modalContent}
+              </Modal>
+            </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Modal } from '@zone-ui/modal';
+
+<Modal isOpen={true} onClose={closeHandler} title="${modalTitle}">
+  ${modalContent}
+</Modal>`}
+              </pre>
+            </div>
+          </div>
+        );
+      case 'select':
+        return (
+          <div className="component-section">
+            <h2>Select Playground</h2>
+            <div className="controls">
+              <label>
+                Value:
+                <select value={selectValue} onChange={e => setSelectValue(e.target.value)}>
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </select>
+              </label>
+            </div>
+            <div className="demo">
               <Select
-                value={selectSelectedOption}
-                onChange={(value) => setSelectSelectedOption(value)}
+                value={selectValue}
+                onChange={setSelectValue}
                 options={[
                   { value: 'option1', label: 'Option 1' },
                   { value: 'option2', label: 'Option 2' },
-                  { value: 'option3', label: 'Option 3' }
+                  { value: 'option3', label: 'Option 3' },
                 ]}
               />
             </div>
-          </div>
-          <div className="component-section">
-            <h2>Modal</h2>
-            <div className="controls">
-              <Button variant="primary" onClick={() => setModalShow(true)}>
-                Open Modal
-              </Button>
-            </div>
-            {modalShow && (
-              <Modal
-                isOpen={modalShow}
-                onClose={() => setModalShow(false)}
-                title="Modal Title"
-              >
-                <p>This is the modal content.</p>
-                <Button variant="primary" onClick={() => setModalShow(false)}>
-                  Close
-                </Button>
-              </Modal>
-            )}
-          </div>
-          <div className="component-section">
-            <h2>Drawer</h2>
-            <div className="controls">
-              <Button variant="primary" onClick={() => setDrawerShow(true)}>
-                Open Drawer
-              </Button>
-            </div>
-            {drawerShow && (
-              <Drawer
-                isOpen={drawerShow}
-                onClose={() => setDrawerShow(false)}
-                title="Drawer Title"
-              >
-                <p>This is the drawer content.</p>
-              </Drawer>
-            )}
-          </div>
-          <div className="component-section">
-            <h2>Tooltip</h2>
-            <div className="controls">
-              <Checkbox
-                label="Show Tooltip"
-                checked={tooltipShow}
-                onChange={(e) => setTooltipShow(e.target.checked)}
-              />
-              <Breadcrumb
-                items={[
-                  { title: "Home", href: "/" },
-                  { title: "Library", href: "/library" },
-                  { title: "Data", current: true }
-                ]}
-              />
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Select } from '@zone-ui/select';
+
+<Select
+  value="${selectValue}"
+  options={${JSON.stringify([
+    { value: 'option1', label: 'Option 1' },
+    { value: 'option2', label: 'Option 2' },
+    { value: 'option3', label: 'Option 3' },
+  ], null, 2)}}
+/>`}
+              </pre>
             </div>
           </div>
-        </div>
-        <div className="component-section">
-          <h2>Card</h2>
-          <div className="demo">
-            <Card 
-              title="Card Title" 
-              actions={<Badge type="success">New</Badge>}
-              children={<>
-                <p>This is the card body content.</p>
-                <div className="card-footer">
-                  <Button variant="primary">Action</Button>
-                </div>
-              </>}
-              bordered
-            />
-          </div>
-        </div>
-        <div className="component-section">
-          <h2>Checkbox</h2>
-          <div className="controls">
-                <Checkbox
-                  label="Checkbox"
-                  checked={checkboxChecked}
-                  onChange={(e) => setCheckboxChecked(e.target.checked)}
-                />
-          </div>
-        </div>
-        <div className="component-section">
-          <h2>Datepicker</h2>
-          <div className="controls">
-            <Datepicker
-              value={datepickerSelectedDate}
-              onChange={setDatepickerSelectedDate}
-            />
-          </div>
-        </div>
-        <div className="component-section">
-          <h2>Select</h2>
-          <div className="controls">
-            <Select
-              value={selectSelectedOption}
-              onChange={(value: string | number) => setSelectSelectedOption(value)}
-              options={[
-                { value: 'option1', label: 'Option 1' },
-                { value: 'option2', label: 'Option 2' },
-                { value: 'option3', label: 'Option 3' }
-              ]}
-            />
-          </div>
-        </div>
-        <div className="component-section">
-          <h2>Modal</h2>
-          <div className="controls">
-            <Button variant="primary" onClick={() => setModalShow(true)}>
-              Open Modal
-            </Button>
-          </div>
-          {modalShow && (
-            <Modal
-              isOpen={modalShow}
-              onClose={() => setModalShow(false)}
-              title="Modal Title"
-            >
-              <p>This is the modal content.</p>
-              <Button variant="primary" onClick={() => setModalShow(false)}>
-                Close
-              </Button>
-            </Modal>
-          )}
-        </div>
-        <div className="component-section">
-          <h2>Drawer</h2>
-          <div className="controls">
-            <Button variant="primary" onClick={() => setDrawerShow(true)}>
-              Open Drawer
-            </Button>
-          </div>
-          {drawerShow && (
-            <Drawer
-              isOpen={drawerShow}
-              onClose={() => setDrawerShow(false)}
-              title="Drawer Title"
-            >
-              <p>This is the drawer content.</p>
-            </Drawer>
-          )}
-        </div>
-        <div className="component-section">
-          <h2>Tooltip</h2>
-          <div className="controls">
-            <Checkbox
-              label="Show Tooltip"
-              checked={tooltipShow}
-              onChange={(e) => setTooltipShow(e.target.checked)}
-            />
-          </div>
-          <div className="demo">
-            <Tooltip content="This is a tooltip">
-              <Button variant="primary">Hover me</Button>
-            </Tooltip>
-          </div>
-        </div>
-        <div className="component-section">
-          <h2>Sidebar</h2>
-          <div className="controls">
-            <Checkbox
-              label="Show Sidebar"
-              checked={sidebarShow}
-              onChange={(e) => setSidebarShow(e.target.checked)}
-            />
-          </div>
-          {sidebarShow && (
-            <Sidebar 
-              logo="/path/to/logo.png"
-              navItems={[
-                { icon: () => <span>🏠</span>, label: 'Home', href: '#' },
-                { icon: () => <span>🔔</span>, label: 'Notifications', href: '#' },
-                { icon: () => <span>👤</span>, label: 'Profile', href: '#' }
-              ]}
-              footerItems={[
-                { icon: () => <span>⚙️</span>, label: 'Settings', onClick: () => {} },
-                { icon: () => <span>🚪</span>, label: 'Logout', onClick: () => {} }
-              ]}
-            />
-          )}
-        </div>
-        <div className="component-section">
-          <h2>Switch</h2>
-          <div className="controls">
-            <Switch
-              checked={switchChecked}
-              onChange={(e) => setSwitchChecked(e.target.checked)}
-            />
-          </div>
-        </div>
-        <div className="component-section">
-          <h2>Progress</h2>
-          <div className="controls">
-            <Checkbox
-              label="Show Progress"
-              checked={progressShow}
-              onChange={(e) => setProgressShow(e.target.checked)}
-            />
-          </div>
-          {progressShow && (
+        );
+      case 'switch':
+        return (
+          <div className="component-section">
+            <h2>Switch Playground</h2>
+            <div className="controls">
+              <label>
+                <input type="checkbox" checked={switchChecked} onChange={e => setSwitchChecked(e.target.checked)} />
+                Checked
+              </label>
+            </div>
             <div className="demo">
-              <Progress value={50} />
+              <Switch checked={switchChecked} onChange={e => setSwitchChecked(e.target.checked)} />
             </div>
-          )}
-        </div>
-        <div className="component-section">
-          <h2>Skeleton</h2>
-          <div className="controls">
-            <Checkbox
-              label="Show Skeleton"
-              checked={skeletonShow}
-              onChange={(e) => setSkeletonShow(e.target.checked)}
-            />
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Switch } from '@zone-ui/switch';
+
+<Switch checked={${switchChecked}} />`}
+              </pre>
+            </div>
           </div>
-          {skeletonShow && (
-            <div className="demo">
-              <Skeleton />
+        );
+      case 'tooltip':
+        return (
+          <div className="component-section">
+            <h2>Tooltip Playground</h2>
+            <div className="controls">
+              <label>
+                Content:
+                <input type="text" value={tooltipContent} onChange={e => setTooltipContent(e.target.value)} />
+              </label>
             </div>
-          )}
-        </div>
-        <div className="component-section">
-          <h2>Tabs</h2>
-          <div className="controls">
-            <Tabs
-              initialActiveTab={activeTab}
-            >
-              {tabs.map((tab) => (
-                <Tab key={tab.id} title={tab.title}>
-                  <p>This is the content of {tab.title}.</p>
-                </Tab>
+            <div className="demo">
+              <Tooltip content={tooltipContent}>
+                <span style={{ display: 'inline-block', padding: '0.5rem 1rem', background: '#e5e7eb', borderRadius: '0.5rem', cursor: 'pointer' }}>Hover me</span>
+              </Tooltip>
+            </div>
+            <div className="code-section" style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#2563eb' }}>Code</h3>
+              <pre style={{ background: '#f8fafc', padding: '1rem', borderRadius: '0.5rem', fontSize: '0.95rem', overflowX: 'auto' }}>
+{`import { Tooltip } from '@zone-ui/tooltip';
+
+<Tooltip content="${tooltipContent}">
+  <span>Hover me</span>
+</Tooltip>`}
+              </pre>
+            </div>
+          </div>
+        );
+      default:
+        return <div>Select a component from the sidebar.</div>;
+    }
+  }
+
+  return (
+    <ThemeProvider>
+      <div className="app-container">
+        <div className="sidebar">
+          <div className="sidebar-header">
+            <h1>Zone UI</h1>
+          </div>
+          <nav className="sidebar-nav">
+            <ul>
+              {COMPONENTS.map((comp) => (
+                <li
+                  key={comp.key}
+                  className={selectedComponent === comp.key ? 'active' : ''}
+                  onClick={() => setSelectedComponent(comp.key)}
+                >
+                  {comp.label}
+                </li>
               ))}
-            </Tabs>
-          </div>
+            </ul>
+          </nav>
         </div>
-        <div className="component-section">
-          <h2>Input</h2>
-          <div className="controls">
-            <Input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Enter text..."
-            />
-          </div>
+        <div className="main-content">
+          {renderPlayground()}
         </div>
       </div>
     </ThemeProvider>
   );
+};
+
+function renderButtonCode({ variant, size, loading, disabled, children }: { variant: string, size: string, loading: boolean, disabled: boolean, children: string }) {
+  let props = [];
+  if (variant !== 'primary') props.push(`variant=\"${variant}\"`);
+  if (size !== 'medium') props.push(`size=\"${size}\"`);
+  if (loading) props.push('loading');
+  if (disabled) props.push('disabled');
+  const propsString = props.length ? '\n  ' + props.join('\n  ') : '';
+  return `import { Button } from '@zone-ui/button';\n\n<Button${propsString}>\n  ${children || 'Button'}\n</Button>`;
 }
 
 export default App;

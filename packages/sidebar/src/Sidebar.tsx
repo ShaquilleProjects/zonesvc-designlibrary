@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Sidebar.css';
 import { useTheme } from '@zone-ui/theme-provider';
-import { Button } from "@zone-ui/button";"
+import { Button } from "@zone-ui/button";
 import { Home, Bell, User, Settings, Logout } from 'lucide-react';
 
 interface NavItem {

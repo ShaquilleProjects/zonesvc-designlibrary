@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Breadcrumb.css';
+import styles from './Breadcrumb.css?inline';
 import { useTheme } from '@zone-ui/theme-provider';
 import { BreadcrumbItem } from './types';
 
