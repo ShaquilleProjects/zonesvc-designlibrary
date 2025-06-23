@@ -1,0 +1,41 @@
+.input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input__label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.input__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+}
+
+.input__prefix,
+.input__suffix {
+  color: var(--text-secondary);
+}
+
+.input__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.input__error {
+  color: var(--danger);
+  font-size: 0.75rem;
+}

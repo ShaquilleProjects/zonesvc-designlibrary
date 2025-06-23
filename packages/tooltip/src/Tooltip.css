@@ -1,0 +1,124 @@
+.tooltip {
+  position: fixed;
+  z-index: 3000;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.tooltip__content {
+  padding: calc(var(--zui-space-unit) * 1.5);
+  background-color: var(--zui-background);
+  color: var(--zui-secondary);
+  border-radius: calc(var(--zui-space-unit) * 1);
+  font-family: var(--zui-font-family);
+  font-size: var(--zui-font-size-base);
+  line-height: var(--zui-line-height);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 200px;
+}
+
+.tooltip__arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--zui-background);
+}
+
+.tooltip__arrow::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.tooltip--top .tooltip__arrow {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--bottom .tooltip__arrow {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.tooltip--left .tooltip__arrow {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(270deg);
+}
+
+.tooltip--right .tooltip__arrow {
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.tooltip--top .tooltip__arrow::before,
+.tooltip--bottom .tooltip__arrow::before {
+  left: -2px;
+  top: -2px;
+}
+
+.tooltip--left .tooltip__arrow::before,
+.tooltip--right .tooltip__arrow::before {
+  top: -2px;
+  left: -2px;
+}
+
+.tooltip--show {
+  opacity: 1;
+  transform: translate(0, 0);
+  pointer-events: auto;
+}
+
+.tooltip--hide {
+  opacity: 0;
+  transform: translate(0, -10px);
+  pointer-events: none;
+}
+
+.tooltip--fade {
+  transition: opacity 0.2s ease;
+}
+
+.tooltip--slide {
+  transition: transform 0.2s ease;
+}
+
+.tooltip--delay {
+  transition-delay: 0.2s;
+}
+
+.tooltip--dark {
+  background-color: var(--zui-secondary);
+  color: white;
+}
+
+.tooltip--light {
+  background-color: white;
+  color: var(--zui-secondary);
+}
+
+.tooltip--primary {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.tooltip--success {
+  background-color: var(--zui-success);
+  color: white;
+}
+
+.tooltip--warning {
+  background-color: var(--zui-warning);
+  color: white;
+}
+
+.tooltip--danger {
+  background-color: var(--zui-danger);
+  color: white;
+}

@@ -1,0 +1,128 @@
+.divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: calc(var(--zui-space-unit) * 3) 0;
+}
+
+.divider__line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--zui-secondary);
+}
+
+.divider__content {
+  padding: 0 calc(var(--zui-space-unit) * 2);
+  font-family: var(--zui-font-family);
+  font-size: var(--zui-font-size-base);
+  line-height: var(--zui-line-height);
+  color: var(--zui-secondary);
+}
+
+.divider--vertical {
+  flex-direction: column;
+  margin: 0;
+  padding: calc(var(--zui-space-unit) * 3) 0;
+}
+
+.divider--vertical .divider__line {
+  width: 1px;
+  height: 100%;
+}
+
+.divider--vertical .divider__content {
+  padding: calc(var(--zui-space-unit) * 2) 0;
+}
+
+.divider--dashed {
+  .divider__line {
+    background-image: linear-gradient(
+      to right,
+      var(--zui-secondary) 0%,
+      var(--zui-secondary) 50%,
+      transparent 50%,
+      transparent 100%
+    );
+    background-size: 20px 1px;
+  }
+}
+
+.divider--dotted {
+  .divider__line {
+    background-image: radial-gradient(circle, var(--zui-secondary) 50%, transparent 50%);
+    background-size: 4px 4px;
+  }
+}
+
+.divider--thick {
+  .divider__line {
+    height: 2px;
+  }
+}
+
+.divider--thin {
+  .divider__line {
+    height: 0.5px;
+  }
+}
+
+.divider--primary {
+  .divider__line {
+    background-color: var(--zui-primary);
+  }
+}
+
+.divider--success {
+  .divider__line {
+    background-color: var(--zui-success);
+  }
+}
+
+.divider--warning {
+  .divider__line {
+    background-color: var(--zui-warning);
+  }
+}
+
+.divider--danger {
+  .divider__line {
+    background-color: var(--zui-danger);
+  }
+}
+
+.divider--info {
+  .divider__line {
+    background-color: var(--zui-info);
+  }
+}
+
+.divider--no-line {
+  .divider__line {
+    display: none;
+  }
+}
+
+.divider--center {
+  justify-content: center;
+}
+
+.divider--start {
+  justify-content: flex-start;
+}
+
+.divider--end {
+  justify-content: flex-end;
+}
+
+.divider--between {
+  justify-content: space-between;
+}
+
+.divider--around {
+  justify-content: space-around;
+}
+
+.divider--evenly {
+  justify-content: space-evenly;
+}

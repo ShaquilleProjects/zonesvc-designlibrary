@@ -1,0 +1,135 @@
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--zui-space-unit) * 1);
+  padding: calc(var(--zui-space-unit) * 2);
+  background-color: var(--zui-background);
+  border-radius: calc(var(--zui-space-unit) * 1);
+  border: 1px solid var(--zui-secondary);
+}
+
+.spinner--center {
+  justify-content: center;
+}
+
+.spinner--start {
+  justify-content: flex-start;
+}
+
+.spinner--end {
+  justify-content: flex-end;
+}
+
+.spinner--rounded {
+  border-radius: calc(var(--zui-space-unit) * 1.5);
+}
+
+.spinner--shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.spinner__spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid transparent;
+  border-top-color: var(--zui-primary);
+  border-radius: 50%;
+  animation: spinner-rotate 1s linear infinite;
+}
+
+.spinner--small .spinner__spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+}
+
+.spinner--medium .spinner__spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.spinner--large .spinner__spinner {
+  width: 32px;
+  height: 32px;
+  border-width: 2.5px;
+}
+
+.spinner__text {
+  font-family: var(--zui-font-family);
+  font-size: var(--zui-font-size-base);
+  line-height: var(--zui-line-height);
+  color: var(--zui-secondary);
+}
+
+.spinner--primary .spinner__spinner {
+  border-top-color: var(--zui-primary);
+}
+
+.spinner--success .spinner__spinner {
+  border-top-color: var(--zui-success);
+}
+
+.spinner--warning .spinner__spinner {
+  border-top-color: var(--zui-warning);
+}
+
+.spinner--danger .spinner__spinner {
+  border-top-color: var(--zui-danger);
+}
+
+.spinner--info .spinner__spinner {
+  border-top-color: var(--zui-info);
+}
+
+.spinner--secondary .spinner__spinner {
+  border-top-color: var(--zui-secondary);
+}
+
+.spinner--borderless {
+  border: none;
+}
+
+.spinner--simple {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.spinner--inline {
+  display: inline-flex;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.spinner--centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.spinner--full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

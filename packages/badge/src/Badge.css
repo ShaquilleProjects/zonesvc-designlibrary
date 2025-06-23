@@ -1,0 +1,103 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--zui-space-unit) * 0.5);
+  padding: calc(var(--zui-space-unit) * 0.5) calc(var(--zui-space-unit) * 1);
+  border-radius: calc(var(--zui-space-unit) * 1.5);
+  font-family: var(--zui-font-family);
+  font-size: calc(var(--zui-font-size-base) * 0.875);
+  line-height: var(--zui-line-height);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.badge--primary {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.badge--success {
+  background-color: var(--zui-success);
+  color: white;
+}
+
+.badge--warning {
+  background-color: var(--zui-warning);
+  color: white;
+}
+
+.badge--danger {
+  background-color: var(--zui-danger);
+  color: white;
+}
+
+.badge--info {
+  background-color: var(--zui-info);
+  color: white;
+}
+
+.badge--secondary {
+  background-color: var(--zui-secondary);
+  color: white;
+}
+
+.badge--outline {
+  border: 1px solid var(--zui-secondary);
+  background-color: transparent;
+  color: var(--zui-secondary);
+}
+
+.badge--outline.badge--primary {
+  border-color: var(--zui-primary);
+  color: var(--zui-primary);
+}
+
+.badge--outline.badge--success {
+  border-color: var(--zui-success);
+  color: var(--zui-success);
+}
+
+.badge--outline.badge--warning {
+  border-color: var(--zui-warning);
+  color: var(--zui-warning);
+}
+
+.badge--outline.badge--danger {
+  border-color: var(--zui-danger);
+  color: var(--zui-danger);
+}
+
+.badge--outline.badge--info {
+  border-color: var(--zui-info);
+  color: var(--zui-info);
+}
+
+.badge--pill {
+  border-radius: 9999px;
+}
+
+.badge--dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.badge--small {
+  padding: calc(var(--zui-space-unit) * 0.25) calc(var(--zui-space-unit) * 0.75);
+  font-size: calc(var(--zui-font-size-base) * 0.75);
+}
+
+.badge--large {
+  padding: calc(var(--zui-space-unit) * 0.75) calc(var(--zui-space-unit) * 1.5);
+  font-size: calc(var(--zui-font-size-base) * 1);
+}
+
+.badge--with-icon {
+  padding-left: calc(var(--zui-space-unit) * 1.25);
+}

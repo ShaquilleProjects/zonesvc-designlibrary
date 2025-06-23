@@ -1,0 +1,44 @@
+.line-chart {
+  width: 100%;
+  height: 100%;
+}
+
+.line-chart__title {
+  font-family: var(--zui-font-family);
+  font-size: calc(var(--zui-font-size-base) * 1.25);
+  line-height: var(--zui-line-height);
+  color: var(--zui-secondary);
+  margin-bottom: calc(var(--zui-space-unit) * 2);
+}
+
+.line-chart__legend {
+  display: flex;
+  gap: calc(var(--zui-space-unit) * 2);
+  margin-top: calc(var(--zui-space-unit) * 2);
+}
+
+.line-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--zui-space-unit) * 1);
+}
+
+.line-chart__legend-dot {
+  width: calc(var(--zui-space-unit) * 1);
+  height: calc(var(--zui-space-unit) * 1);
+  border-radius: 50%;
+}
+
+.line-chart__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--zui-secondary);
+}
+
+.line-chart__error {
+  color: var(--zui-danger);
+  font-size: calc(var(--zui-font-size-base) * 0.875);
+  margin-top: calc(var(--zui-space-unit) * 1);
+}

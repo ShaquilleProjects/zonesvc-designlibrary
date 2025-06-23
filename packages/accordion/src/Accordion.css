@@ -1,0 +1,106 @@
+.accordion {
+  width: 100%;
+}
+
+.accordion__item {
+  border-bottom: 1px solid var(--zui-secondary);
+}
+
+.accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--zui-space-unit) * 2) calc(var(--zui-space-unit) * 3);
+  cursor: pointer;
+  background-color: var(--zui-background);
+  transition: background-color 0.2s ease;
+}
+
+.accordion__header:hover {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.accordion__header--active {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.accordion__header-title {
+  font-family: var(--zui-font-family);
+  font-size: var(--zui-font-size-base);
+  line-height: var(--zui-line-height);
+  font-weight: 500;
+  margin: 0;
+  flex: 1;
+}
+
+.accordion__header-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.accordion__header--active .accordion__header-icon {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion__content-inner {
+  padding: 0 calc(var(--zui-space-unit) * 3);
+  border-top: 1px solid var(--zui-secondary);
+}
+
+.accordion--multiple {
+  .accordion__item {
+    border-bottom: 1px solid var(--zui-secondary);
+  }
+  
+  .accordion__item:last-child {
+    border-bottom: none;
+  }
+}
+
+.accordion--flush {
+  .accordion__item {
+    border: none;
+    border-radius: 0;
+    margin: 0;
+  }
+}
+
+.accordion--rounded {
+  .accordion__item:first-child {
+    border-radius: calc(var(--zui-space-unit) * 1.5) calc(var(--zui-space-unit) * 1.5) 0 0;
+  }
+  
+  .accordion__item:last-child {
+    border-radius: 0 0 calc(var(--zui-space-unit) * 1.5) calc(var(--zui-space-unit) * 1.5);
+  }
+}
+
+.accordion--bordered {
+  .accordion__item {
+    border: 1px solid var(--zui-secondary);
+  }
+}
+
+.accordion--shadow {
+  .accordion__item {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.accordion--compact {
+  .accordion__header {
+    padding: calc(var(--zui-space-unit) * 1.5) calc(var(--zui-space-unit) * 2);
+  }
+  
+  .accordion__content-inner {
+    padding: 0 calc(var(--zui-space-unit) * 2);
+  }
+}

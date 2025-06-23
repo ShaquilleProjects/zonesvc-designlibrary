@@ -1,0 +1,114 @@
+.alert {
+  padding: calc(var(--zui-space-unit) * 2);
+  border-radius: calc(var(--zui-space-unit) * 1);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--zui-space-unit) * 2);
+  font-family: var(--zui-font-family);
+  font-size: var(--zui-font-size-base);
+  line-height: var(--zui-line-height);
+}
+
+.alert__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.alert__content {
+  flex: 1;
+}
+
+.alert__title {
+  font-weight: bold;
+  margin-bottom: calc(var(--zui-space-unit) * 0.5);
+}
+
+.alert__description {
+  color: var(--zui-secondary);
+}
+
+.alert--primary {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.alert--success {
+  background-color: var(--zui-success);
+  color: white;
+}
+
+.alert--warning {
+  background-color: var(--zui-warning);
+  color: white;
+}
+
+.alert--danger {
+  background-color: var(--zui-danger);
+  color: white;
+}
+
+.alert--info {
+  background-color: var(--zui-info);
+  color: white;
+}
+
+.alert--with-icon {
+  padding-left: calc(var(--zui-space-unit) * 3);
+}
+
+.alert--dismissable {
+  position: relative;
+  padding-right: calc(var(--zui-space-unit) * 3);
+}
+
+.alert--dismissable .alert__close {
+  position: absolute;
+  right: calc(var(--zui-space-unit) * 2);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.alert--dismissable .alert__close:hover {
+  opacity: 0.7;
+}
+
+.alert--full-width {
+  width: 100%;
+}
+
+.alert--rounded {
+  border-radius: calc(var(--zui-space-unit) * 2);
+}
+
+.alert--outlined {
+  border: 1px solid var(--zui-secondary);
+  background-color: transparent;
+}
+
+.alert--outlined.alert--primary {
+  color: var(--zui-primary);
+}
+
+.alert--outlined.alert--success {
+  color: var(--zui-success);
+}
+
+.alert--outlined.alert--warning {
+  color: var(--zui-warning);
+}
+
+.alert--outlined.alert--danger {
+  color: var(--zui-danger);
+}
+
+.alert--outlined.alert--info {
+  color: var(--zui-info);
+}

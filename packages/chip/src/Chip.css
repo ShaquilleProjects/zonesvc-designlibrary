@@ -1,0 +1,136 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--zui-space-unit) * 0.5);
+  padding: calc(var(--zui-space-unit) * 0.5) calc(var(--zui-space-unit) * 1);
+  border-radius: calc(var(--zui-space-unit) * 1.5);
+  font-family: var(--zui-font-family);
+  font-size: calc(var(--zui-font-size-base) * 0.875);
+  line-height: var(--zui-line-height);
+  background-color: var(--zui-background);
+  border: 1px solid var(--zui-secondary);
+  transition: all 0.2s ease;
+}
+
+.chip__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.chip__close {
+  width: 16px;
+  height: 16px;
+  color: var(--zui-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.chip__close:hover {
+  color: var(--zui-primary);
+}
+
+.chip--primary {
+  background-color: var(--zui-primary);
+  color: white;
+  border-color: var(--zui-primary);
+}
+
+.chip--success {
+  background-color: var(--zui-success);
+  color: white;
+  border-color: var(--zui-success);
+}
+
+.chip--warning {
+  background-color: var(--zui-warning);
+  color: white;
+  border-color: var(--zui-warning);
+}
+
+.chip--danger {
+  background-color: var(--zui-danger);
+  color: white;
+  border-color: var(--zui-danger);
+}
+
+.chip--info {
+  background-color: var(--zui-info);
+  color: white;
+  border-color: var(--zui-info);
+}
+
+.chip--secondary {
+  background-color: var(--zui-secondary);
+  color: white;
+  border-color: var(--zui-secondary);
+}
+
+.chip--outline {
+  background-color: transparent;
+}
+
+.chip--outline.chip--primary {
+  color: var(--zui-primary);
+  border-color: var(--zui-primary);
+}
+
+.chip--outline.chip--success {
+  color: var(--zui-success);
+  border-color: var(--zui-success);
+}
+
+.chip--outline.chip--warning {
+  color: var(--zui-warning);
+  border-color: var(--zui-warning);
+}
+
+.chip--outline.chip--danger {
+  color: var(--zui-danger);
+  border-color: var(--zui-danger);
+}
+
+.chip--outline.chip--info {
+  color: var(--zui-info);
+  border-color: var(--zui-info);
+}
+
+.chip--outline.chip--secondary {
+  color: var(--zui-secondary);
+  border-color: var(--zui-secondary);
+}
+
+.chip--small {
+  padding: calc(var(--zui-space-unit) * 0.25) calc(var(--zui-space-unit) * 0.75);
+  font-size: calc(var(--zui-font-size-base) * 0.75);
+}
+
+.chip--large {
+  padding: calc(var(--zui-space-unit) * 0.75) calc(var(--zui-space-unit) * 1.5);
+  font-size: calc(var(--zui-font-size-base) * 1);
+}
+
+.chip--clickable {
+  cursor: pointer;
+}
+
+.chip--clickable:hover {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.chip--clickable.chip--outline:hover {
+  background-color: var(--zui-primary);
+  color: white;
+  border-color: var(--zui-primary);
+}
+
+.chip--selected {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.chip--selected.chip--outline {
+  background-color: var(--zui-primary);
+  color: white;
+  border-color: var(--zui-primary);
+}

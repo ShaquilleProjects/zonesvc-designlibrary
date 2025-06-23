@@ -1,0 +1,84 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--zui-space-unit) * 2) calc(var(--zui-space-unit) * 4);
+  border-radius: calc(var(--zui-space-unit) * 2);
+  font-family: var(--zui-font-family);
+  font-size: var(--zui-font-size-base);
+  line-height: var(--zui-line-height);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.button--primary {
+  background-color: var(--zui-primary);
+  color: white;
+}
+
+.button--secondary {
+  background-color: var(--zui-secondary);
+  color: white;
+}
+
+.button--ghost {
+  background-color: transparent;
+  color: var(--zui-primary);
+  border: 1px solid var(--zui-primary);
+}
+
+.button--danger {
+  background-color: var(--zui-danger);
+  color: white;
+}
+
+/* Sizes */
+.button--small {
+  padding: calc(var(--zui-space-unit) * 1.5) calc(var(--zui-space-unit) * 3);
+  font-size: calc(var(--zui-font-size-base) * 0.875);
+}
+
+.button--large {
+  padding: calc(var(--zui-space-unit) * 2.5) calc(var(--zui-space-unit) * 5);
+  font-size: calc(var(--zui-font-size-base) * 1.25);
+}
+
+/* Loading state */
+.button--loading {
+  position: relative;
+}
+
+.button--loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-left: calc(var(--zui-space-unit) * 2);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
