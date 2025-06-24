@@ -43,6 +43,8 @@ body {
   flex-shrink: 0;
   position: relative;
   z-index: 1;
+  height: 100vh;
+  min-width: 200px;
 }
 
 .sidebar-header h1 {
@@ -50,6 +52,12 @@ body {
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
+}
+
+.sidebar-nav {
+  max-height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 1rem;
 }
 
 .sidebar-nav ul {

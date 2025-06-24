@@ -24,3 +24,15 @@
 2025-06-24T05:09:02.309396Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
 2025-06-24T05:09:02.709667Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("dev-server/vite.config.js.timestamp-1750741742258-77d2436b45f5a.mjs")}
 2025-06-24T05:09:02.709684Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-06-24T05:11:06.312777Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("dev-server/src/App.tsx")}
+2025-06-24T05:11:06.312847Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-06-24T05:11:06.439416Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("dev-server/src/App.tsx")}
+2025-06-24T05:11:06.439450Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-06-24T05:22:34.607620Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf(".turbo/cookies/3.cookie")}
+2025-06-24T05:22:34.607684Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-06-24T05:22:48.407051Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("dev-server/vite.config.js.timestamp-1750742568350-c353733f48e48.mjs")}
+2025-06-24T05:22:48.407073Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-06-24T05:22:48.806252Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("dev-server/vite.config.js.timestamp-1750742568350-c353733f48e48.mjs")}
+2025-06-24T05:22:48.806267Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
+2025-06-24T05:24:12.306182Z  WARN turborepo_lib::package_changes_watcher: changed_files: {AnchoredSystemPathBuf("dev-server/src/App.css")}
+2025-06-24T05:24:12.306205Z  WARN turborepo_lib::package_changes_watcher: changed_packages: Ok(Some({WorkspacePackage { name: Root, path: AnchoredSystemPathBuf("") }}))
