@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Chip.css';
+import './Chip.css';
 import { useTheme } from '@zone-ui/theme-provider';
 import { X } from 'lucide-react';
 
@@ -29,13 +29,13 @@ export function Chip({
   const theme = useTheme();
 
   const classes = [
-    styles.chip,
+    'chip',
     className,
-    styles[`chip--${type}`],
-    variant === 'outline' ? styles['chip--outline'] : '',
-    styles[`chip--${size}`],
-    onClick ? styles['chip--clickable'] : '',
-    selected ? styles['chip--selected'] : '',
+    `chip--${type}`,
+    variant === 'outline' ? 'chip--outline' : '',
+    `chip--${size}`,
+    onClick ? 'chip--clickable' : '',
+    selected ? 'chip--selected' : '',
   ].filter(Boolean).join(' ');
 
   const handleClick = (e: React.MouseEvent) => {
@@ -59,12 +59,12 @@ export function Chip({
       tabIndex={onClick ? 0 : undefined}
       aria-selected={selected}
     >
-      {Icon && <Icon className={styles.chip__icon} />}
+      {Icon && <Icon className="chip__icon" />}
       <span>{children}</span>
       {onClose && (
         <button
           type="button"
-          className={styles.chip__close}
+          className="chip__close"
           onClick={(e) => {
             e.stopPropagation();
             onClose();

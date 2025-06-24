@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './Modal.css';
-import { useTheme } from '../../theme-provider';
-import { Button } from "@zone-ui/button";
+import './Modal.css';
+import { useTheme } from '@zone-ui/theme-provider';
+import { Button } from '../../button/src/Button';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -47,11 +47,11 @@ export function Modal({
 
   return (
     <div
-      className={`${styles.modal} ${className} ${withAnimation ? styles['modal--with-animation'] : ''} ${
-        isOpen && withAnimation ? styles['modal--show'] : ''
-      } ${size === 'small' ? styles['modal--small'] : ''} ${size === 'large' ? styles['modal--large'] : ''} ${
-        size === 'fullscreen' ? styles['modal--fullscreen'] : ''
-      } ${centered ? styles['modal--centered'] : ''}`}
+      className={`modal ${className} ${withAnimation ? 'modal--with-animation' : ''} ${
+        isOpen && withAnimation ? 'modal--show' : ''
+      } ${size === 'small' ? 'modal--small' : ''} ${size === 'large' ? 'modal--large' : ''} ${
+        size === 'fullscreen' ? 'modal--fullscreen' : ''
+      } ${centered ? 'modal--centered' : ''}`}
       onClick={handleOverlayClick}
       onKeyDown={handleKeyDown}
       role="dialog"
@@ -59,24 +59,24 @@ export function Modal({
       aria-labelledby="modal-title"
       tabIndex={-1}
     >
-      <div className={styles.modal__content}>
-        <div className={styles.modal__header}>
-          <h2 id="modal-title" className={styles.modal__title}>
+      <div className="modal__content">
+        <div className="modal__header">
+          <h2 id="modal-title" className="modal__title">
             {title}
           </h2>
           <button
             type="button"
-            className={styles.modal__close}
+            className="modal__close"
             onClick={onClose}
             aria-label="Close"
           >
             <X />
           </button>
         </div>
-        <div className={styles.modal__body}>{children}</div>
+        <div className="modal__body">{children}</div>
         {actions ? (
-          <div className={styles.modal__footer}>
-            <div className={styles.modal__actions}>{actions}</div>
+          <div className="modal__footer">
+            <div className="modal__actions">{actions}</div>
           </div>
         ) : null}
       </div>

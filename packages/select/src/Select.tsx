@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, forwardRef, ForwardedRef, useImperativeHandle } from 'react';
-import styles from './Select.css';
+import './Select.css';
 import { useTheme } from '@zone-ui/theme-provider';
-import { Button } from '@zone-ui/button';
+import { Button } from '../../button/src/Button';
 import { ChevronDown } from 'lucide-react';
 
 export interface Option {
@@ -67,24 +67,24 @@ export const Select = forwardRef(({
   return (
     <div
       ref={containerRef}
-      className={`${styles.select} ${className}`}
+      className={`select ${className}`}
       {...props}
     >
       {label && (
-        <label className={styles.select__label}>{label}</label>
+        <label className={`select__label`}>{label}</label>
       )}
       
       <div
-        className={styles.select__control}
+        className={`select__trigger${isOpen ? ' select__trigger--open' : ''}`}
         onClick={() => !disabled && setIsOpen(!isOpen)}
         onFocus={handleFocus}
         onBlur={handleBlur}
         tabIndex={0}
         ref={inputRef}
       >
-        <div className={styles.select__value}>
+        <div className={`select__value`}>
           {selectedOption ? selectedOption.label : (
-            <span className={styles.select__placeholder}>{placeholder}</span>
+            <span className={`select__placeholder`}>{placeholder}</span>
           )}
         </div>
         <Button
@@ -93,19 +93,19 @@ export const Select = forwardRef(({
           disabled={disabled}
           onClick={() => !disabled && setIsOpen(!isOpen)}
         >
-          <ChevronDown className={styles.select__icon} />
+          <ChevronDown className={`select__icon`} />
         </Button>
       </div>
 
       {isOpen && (
-        <div className={styles.select__menu}>
+        <div className={`select__menu`}>
           {options.map((option) => (
             <div
               key={option.value}
-              className={`${styles.select__option} ${
-                option.disabled ? styles['select__option.disabled'] : ''
+              className={`select__option ${
+                option.disabled ? 'select__option.disabled' : ''
               } ${
-                option.value === value ? styles['select__option.selected'] : ''
+                option.value === value ? 'select__option.selected' : ''
               }`}
               onClick={() => {
                 if (!option.disabled) {
@@ -123,7 +123,7 @@ export const Select = forwardRef(({
         </div>
       )}
 
-      {error && <div className={styles.select__error}>{error}</div>}
+      {error && <div className={`select__error`}>{error}</div>}
     </div>
   );
 });

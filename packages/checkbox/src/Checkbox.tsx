@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Checkbox.css';
+import './Checkbox.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -17,15 +17,15 @@ export function Checkbox({
   const theme = useTheme();
 
   return (
-    <label className={`${styles.checkbox} ${className}`}>
+    <label className={`checkbox ${className}`}>
       <input
         type="checkbox"
-        className={styles.checkbox__input}
+        className="checkbox__input"
         {...props}
       />
-      <span className={styles.checkbox__control} />
-      <span className={styles.checkbox__label}>{label}</span>
-      {error && <div className={styles.checkbox__error}>{error}</div>}
+      <span className="checkbox__control" />
+      <span className="checkbox__label">{label}</span>
+      {error && <div className="checkbox__error">{error}</div>}
     </label>
   );
 }

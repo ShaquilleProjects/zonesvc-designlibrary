@@ -45,19 +45,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     },
   };
 
-  // Build CSS variables string
-  const cssVars = {
-    '--zui-primary': theme.colors.primary,
-    '--zui-secondary': theme.colors.secondary,
-    '--zui-danger': theme.colors.danger,
-    '--zui-success': theme.colors.success,
-    '--zui-warning': theme.colors.warning,
-    '--zui-font-family': theme.typography.fontFamily,
-    '--zui-font-size-base': theme.typography.fontSize,
-    '--zui-line-height': theme.typography.lineHeight.toString(),
-    '--zui-space-unit': theme.spacing.unit,
-  };
-
   return (
     <ThemeContext.Provider value={{ theme }}>
       <style>{`
@@ -78,9 +65,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
           --zui-space-unit: ${theme.spacing.unit};
         }
       `}</style>
-      <div style={cssVars as React.CSSProperties}>
-        {children}
-      </div>
+      {children}
     </ThemeContext.Provider>
   );
 }

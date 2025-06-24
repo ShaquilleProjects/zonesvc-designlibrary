@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Drawer.css';
+import './Drawer.css';
 import { useTheme } from '@zone-ui/theme-provider';
 import { Button } from '@zone-ui/button';
 import { X } from 'lucide-react';
@@ -45,7 +45,7 @@ export function Drawer({
 
   return (
     <div
-      className={`${styles.drawer__overlay} ${styles['drawer__overlay--show']}`}
+      className={`drawer__overlay drawer__overlay--show`}
       onClick={handleOverlayClick}
       onKeyDown={handleKeyDown}
       role="dialog"
@@ -54,31 +54,27 @@ export function Drawer({
       tabIndex={-1}
     >
       <div
-        className={`${styles.drawer} ${className} ${styles[`drawer--${position}`]} ${
-          isOpen ? styles['drawer--show'] : ''
-        } ${size === 'small' ? styles['drawer--small'] : ''} ${size === 'large' ? styles['drawer--large'] : ''} ${
-          size === 'fullscreen' ? styles['drawer--fullscreen'] : ''
-        } ${customWidth ? styles['drawer--custom-width'] : ''}`}
+        className={`drawer ${className} drawer--${position} ${isOpen ? 'drawer--show' : ''} ${size === 'small' ? 'drawer--small' : ''} ${size === 'large' ? 'drawer--large' : ''} ${size === 'fullscreen' ? 'drawer--fullscreen' : ''} ${customWidth ? 'drawer--custom-width' : ''}`}
         style={{ width: customWidth }}
         role="region"
       >
-        <div className={styles.drawer__header}>
-          <h2 id="drawer-title" className={styles.drawer__title}>
+        <div className="drawer__header">
+          <h2 id="drawer-title" className="drawer__title">
             {title}
           </h2>
           <button
             type="button"
-            className={styles.drawer__close}
+            className="drawer__close"
             onClick={onClose}
             aria-label="Close"
           >
             <X />
           </button>
         </div>
-        <div className={styles.drawer__content}>{children}</div>
+        <div className="drawer__content">{children}</div>
         {actions ? (
-          <div className={styles.drawer__footer}>
-            <div className={styles.drawer__actions}>{actions}</div>
+          <div className="drawer__footer">
+            <div className="drawer__actions">{actions}</div>
           </div>
         ) : null}
       </div>

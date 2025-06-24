@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Spinner.css';
+import './Spinner.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface SpinnerProps {
@@ -34,24 +34,24 @@ export function Spinner({
   const theme = useTheme();
 
   const classes = [
-    styles.spinner,
+    'spinner',
     className,
-    styles[`spinner--${justify}`],
-    rounded ? styles['spinner--rounded'] : '',
-    shadow ? styles['spinner--shadow'] : '',
-    borderless ? styles['spinner--borderless'] : '',
-    simple ? styles['spinner--simple'] : '',
-    inline ? styles['spinner--inline'] : '',
-    centered ? styles['spinner--centered'] : '',
-    fullScreen ? styles['spinner--full-screen'] : '',
-    styles[`spinner--${size}`],
-    styles[`spinner--${type}`],
+    `spinner--${justify}`,
+    rounded ? 'spinner--rounded' : '',
+    shadow ? 'spinner--shadow' : '',
+    borderless ? 'spinner--borderless' : '',
+    simple ? 'spinner--simple' : '',
+    inline ? 'spinner--inline' : '',
+    centered ? 'spinner--centered' : '',
+    fullScreen ? 'spinner--full-screen' : '',
+    `spinner--${size}`,
+    `spinner--${type}`,
   ].filter(Boolean).join(' ');
 
   return (
     <div className={classes} role="status">
-      <div className={styles.spinner__spinner} />
-      {text && <span className={styles.spinner__text}>{text}</span>}
+      <div className="spinner__spinner" />
+      {text && <span className="spinner__text">{text}</span>}
     </div>
   );
 }

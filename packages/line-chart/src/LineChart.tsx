@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './LineChart.css';
+import './LineChart.css';
 import { useTheme } from '@zone-ui/theme-provider';
 import {
   LineChart as RechartsLineChart,
@@ -47,47 +47,48 @@ export function LineChart({
 
   if (loading) {
     return (
-      <div className={`${styles.lineChart} ${className}`}>
-        <div className={styles.lineChart__loading}>Loading...</div>
+      <div className={`line-chart ${className}`} style={{ width, height }}>
+        <div className="line-chart__loading">Loading...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className={`${styles.lineChart} ${className}`}>
-        <div className={styles.lineChart__error}>{error}</div>
+      <div className={`line-chart ${className}`} style={{ width, height }}>
+        <div className="line-chart__error">{error}</div>
       </div>
     );
   }
 
   return (
-    <div className={`${styles.lineChart} ${className}`}>
-      {title && <h2 className={styles.lineChart__title}>{title}</h2>}
+    <div className={`line-chart ${className}`} style={{ width, height }}>
+      <h3 className="line-chart__title">{title}</h3>
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsLineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey={xAxisKey} />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          {lines.map((line, index) => (
+        <RechartsLineChart data={data} className="line-chart__chart">
+          <CartesianGrid strokeDasharray="3 3" className="line-chart__grid" />
+          <XAxis dataKey={xAxisKey} className="line-chart__x-axis" />
+          <YAxis className="line-chart__y-axis" />
+          <Tooltip className="line-chart__tooltip" />
+          <Legend className="line-chart__legend" />
+          {lines.map((line, idx) => (
             <Line
               key={line.dataKey}
               type={line.type || 'monotone'}
               dataKey={line.dataKey}
               name={line.name}
-              stroke={line.stroke || colors[index % colors.length]}
+              stroke={line.stroke || (colors && colors[idx]) || '#0070f3'}
               dot={line.dot}
+              className="line-chart__line"
             />
           ))}
         </RechartsLineChart>
       </ResponsiveContainer>
-      <div className={styles.lineChart__legend}>
+      <div className="line-chart__legend">
         {lines.map((line, index) => (
-          <div key={line.dataKey} className={styles.lineChart__legendItem}>
+          <div key={line.dataKey} className="line-chart__legendItem">
             <div
-              className={styles.lineChart__legendDot}
+              className="line-chart__legendDot"
               style={{ backgroundColor: line.stroke || colors[index % colors.length] }}
             />
             <span>{line.name}</span>

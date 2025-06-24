@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './List.css';
+import './List.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface ListProps {
@@ -49,17 +49,17 @@ export function List({
   const theme = useTheme();
 
   const classes = [
-    styles.list,
+    'list',
     className,
-    vertical ? styles['list--vertical'] : '',
-    horizontal ? styles['list--horizontal'] : '',
-    inline ? styles['list--inline'] : '',
-    flush ? styles['list--flush'] : '',
-    borderless ? styles['list--borderless'] : '',
-    rounded ? styles['list--rounded'] : '',
-    shadow ? styles['list--shadow'] : '',
-    hoverable ? styles['list--hoverable'] : '',
-    striped ? styles['list--striped'] : '',
+    vertical ? 'list--vertical' : '',
+    horizontal ? 'list--horizontal' : '',
+    inline ? 'list--inline' : '',
+    flush ? 'list--flush' : '',
+    borderless ? 'list--borderless' : '',
+    rounded ? 'list--rounded' : '',
+    shadow ? 'list--shadow' : '',
+    hoverable ? 'list--hoverable' : '',
+    striped ? 'list--striped' : '',
   ].filter(Boolean).join(' ');
 
   const handleClick = (e: React.MouseEvent) => {
@@ -104,14 +104,14 @@ export function ListItem({
   const theme = useTheme();
 
   const classes = [
-    styles.list__item,
+    'list__item',
     className,
-    icon ? styles['list__item--icon'] : '',
-    thumbnail ? styles['list__item--thumbnail'] : '',
-    active ? styles['list__item--active'] : '',
-    disabled ? styles['list__item--disabled'] : '',
-    selected ? styles['list__item--selected'] : '',
-    hoverable ? styles['list__item--hoverable'] : '',
+    Icon ? 'list__item--icon' : '',
+    thumbnail ? 'list__item--thumbnail' : '',
+    active ? 'list__item--active' : '',
+    disabled ? 'list__item--disabled' : '',
+    selected ? 'list__item--selected' : '',
+    hoverable ? 'list__item--hoverable' : '',
   ].filter(Boolean).join(' ');
 
   const handleClick = (e: React.MouseEvent) => {
@@ -139,22 +139,22 @@ export function ListItem({
       tabIndex={onClick && !disabled ? 0 : undefined}
       aria-disabled={disabled}
     >
-      {icon && <Icon size={20} />}
+      {Icon && <Icon />}
       {thumbnail && (
-        <div className={styles.list__thumbnail}>{thumbnail}</div>
+        <div className="list__thumbnail">{thumbnail}</div>
       )}
       {title || description ? (
-        <div className={styles.list__content}>
-          {title && <div className={styles.list__title}>{title}</div>}
+        <div className="list__content">
+          {title && <div className="list__title">{title}</div>}
           {description && (
-            <div className={styles.list__description}>{description}</div>
+            <div className="list__description">{description}</div>
           )}
         </div>
       ) : (
         children
       )}
       {actions && (
-        <div className={styles.list__actions}>{actions}</div>
+        <div className="list__actions">{actions}</div>
       )}
     </div>
   );

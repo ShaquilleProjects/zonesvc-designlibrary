@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Skeleton.css';
+import './Skeleton.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface SkeletonProps {
@@ -20,23 +20,23 @@ export function Skeleton({
   const theme = useTheme();
 
   const classes = [
-    styles.skeleton,
+    'skeleton',
     className,
-    styles[`skeleton--${type}`],
-    delay ? styles['skeleton--delay'] : '',
-    speed === 'slow' ? styles['skeleton--slow'] : '',
-    speed === 'fast' ? styles['skeleton--fast'] : '',
+    `skeleton--${type}`,
+    delay ? 'skeleton--delay' : '',
+    speed === 'slow' ? 'skeleton--slow' : '',
+    speed === 'fast' ? 'skeleton--fast' : '',
   ].filter(Boolean).join(' ');
 
   const renderSkeleton = () => {
     if (type === 'list') {
       return (
-        <div className={styles['skeleton--list']}>
-          <div className={styles['skeleton--list-image']} />
-          <div className={styles['skeleton--list-item']}>
-            <div className={styles['skeleton--text']} />
-            <div className={styles['skeleton--text']} />
-            <div className={styles['skeleton--text']} />
+        <div className='skeleton--list'>
+          <div className='skeleton--list-image' />
+          <div className='skeleton--list-item'>
+            <div className='skeleton--text' />
+            <div className='skeleton--text' />
+            <div className='skeleton--text' />
           </div>
         </div>
       );
@@ -44,9 +44,9 @@ export function Skeleton({
 
     if (type === 'grid') {
       return (
-        <div className={styles['skeleton--grid']}>
+        <div className='skeleton--grid'>
           {[...Array(count)].map((_, i) => (
-            <div key={i} className={styles['skeleton--grid-item']} />
+            <div key={i} className='skeleton--grid-item' />
           ))}
         </div>
       );

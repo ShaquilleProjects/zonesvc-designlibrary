@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './Modal.css';
-import { useTheme } from "/theme-provider';
-import { Button } from "/button';
+import './Modal.css';
+import { useTheme } from "../../packages/theme-provider/src/ThemeProvider";
+import { Button } from "/button";
 import { X } from 'lucide-react';
 
 interface ModalProps {

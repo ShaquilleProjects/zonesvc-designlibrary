@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Alert.css';
+import './Alert.css';
 import { useTheme } from '@zone-ui/theme-provider';
 import { X } from 'lucide-react';
 
@@ -32,24 +32,18 @@ export function Alert({
 
   return (
     <div
-      className={`${styles.alert} ${className} ${styles[`alert--${type}`]} ${
-        Icon ? styles['alert--with-icon'] : ''
-      } ${dismissable ? styles['alert--dismissable'] : ''} ${
-        fullWidth ? styles['alert--full-width'] : ''
-      } ${rounded ? styles['alert--rounded'] : ''} ${
-        outlined ? styles['alert--outlined'] : ''
-      }`}
+      className={`alert ${className} alert--${type} ${Icon ? 'alert--with-icon' : ''} ${dismissable ? 'alert--dismissable' : ''} ${fullWidth ? 'alert--full-width' : ''} ${rounded ? 'alert--rounded' : ''} ${outlined ? 'alert--outlined' : ''}`}
       role="alert"
     >
-      {Icon && <Icon className={styles.alert__icon} />}
-      <div className={styles.alert__content}>
-        {title && <div className={styles.alert__title}>{title}</div>}
-        {description && <div className={styles.alert__description}>{description}</div>}
+      {Icon && <Icon className="alert__icon" />}
+      <div className="alert__content">
+        {title && <div className="alert__title">{title}</div>}
+        {description && <div className="alert__description">{description}</div>}
       </div>
       {dismissable && (
         <button
           type="button"
-          className={styles.alert__close}
+          className="alert__close"
           onClick={onClose}
           aria-label="Close"
         >

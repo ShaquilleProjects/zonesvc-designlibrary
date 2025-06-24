@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styles from './Tooltip.css';
+import './Tooltip.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface TooltipProps {
@@ -23,6 +23,7 @@ export function Tooltip({
 }: TooltipProps) {
   const themeContext = useTheme();
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [positionStyle, setPositionStyle] = useState({
     top: 0,
@@ -31,10 +32,9 @@ export function Tooltip({
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!tooltipRef.current) return;
+      if (!tooltipRef.current || !triggerRef.current) return;
 
-      const rect = children.ref?.current?.getBoundingClientRect();
-      if (!rect) return;
+      const rect = triggerRef.current.getBoundingClientRect();
 
       const viewport = {
         width: window.innerWidth,
@@ -89,31 +89,36 @@ export function Tooltip({
       setIsVisible(false);
     };
 
-    children.ref?.current?.addEventListener('mousemove', handleMouseMove);
-    children.ref?.current?.addEventListener('mouseenter', handleMouseEnter);
-    children.ref?.current?.addEventListener('mouseleave', handleMouseLeave);
+    const triggerElement = triggerRef.current;
+    if (triggerElement) {
+      triggerElement.addEventListener('mousemove', handleMouseMove);
+      triggerElement.addEventListener('mouseenter', handleMouseEnter);
+      triggerElement.addEventListener('mouseleave', handleMouseLeave);
 
-    return () => {
-      children.ref?.current?.removeEventListener('mousemove', handleMouseMove);
-      children.ref?.current?.removeEventListener('mouseenter', handleMouseEnter);
-      children.ref?.current?.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, [children.ref, position, delay]);
+      return () => {
+        triggerElement.removeEventListener('mousemove', handleMouseMove);
+        triggerElement.removeEventListener('mouseenter', handleMouseEnter);
+        triggerElement.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, [position, delay]);
+
+  const clonedChild = React.cloneElement(children, {
+    ref: triggerRef,
+  });
 
   return (
     <>
-      {children}
+      {clonedChild}
       {isVisible && (
         <div
           ref={tooltipRef}
-          className={`${styles.tooltip} ${className} ${styles[`tooltip--${position}`]} ${
-            styles[`tooltip--${theme}`]
-          } ${styles[`tooltip--${animation}`]} ${styles['tooltip--show']}`}
+          className={`tooltip ${className} tooltip--${position} tooltip--${theme} tooltip--${animation} tooltip--show`}
           style={positionStyle}
           role="tooltip"
         >
-          <div className={styles.tooltip__content}>{content}</div>
-          <div className={styles.tooltip__arrow} />
+          <div className="tooltip__content">{content}</div>
+          <div className="tooltip__arrow" />
         </div>
       )}
     </>

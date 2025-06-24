@@ -38,7 +38,6 @@ export default defineConfig({
   },
   esbuild: {
     jsxFactory: 'React.createElement',
-    jsxFragment: 'React.Fragment',
-    jsxInject: `import React from 'react'`
+    jsxFragment: 'React.Fragment'
   }
 })

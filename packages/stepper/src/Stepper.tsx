@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Stepper.css';
+import './Stepper.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface Step {
@@ -35,11 +35,11 @@ export function Stepper({
   const theme = useTheme();
 
   const classes = [
-    styles.stepper,
+    'stepper',
     className,
-    styles[`stepper--${orientation}`],
-    rounded ? styles['stepper--rounded'] : '',
-    shadow ? styles['stepper--shadow'] : '',
+    `stepper--${orientation}`,
+    rounded ? 'stepper--rounded' : '',
+    shadow ? 'stepper--shadow' : '',
   ].filter(Boolean).join(' ');
 
   const handleStepClick = (index: number) => {
@@ -52,24 +52,24 @@ export function Stepper({
       {steps.map((step, index) => (
         <div
           key={index}
-          className={`${styles.stepper__step} ${
-            styles[`stepper__step--${size}`]
+          className={`${'stepper__step'} ${
+            `stepper__step--${size}`
           } ${
-            index === activeStep ? styles['stepper__step--active'] : ''
+            index === activeStep ? 'stepper__step--active' : ''
           } ${
             step.status === 'completed'
-              ? styles['stepper__step--completed']
+              ? 'stepper__step--completed'
               : ''
           } ${
-            step.status === 'error' ? styles['stepper__step--error'] : ''
+            step.status === 'error' ? 'stepper__step--error' : ''
           } ${
-            step.status === 'warning' ? styles['stepper__step--warning'] : ''
+            step.status === 'warning' ? 'stepper__step--warning' : ''
           } ${
-            step.status === 'info' ? styles['stepper__step--info'] : ''
+            step.status === 'info' ? 'stepper__step--info' : ''
           } ${
-            step.status === 'secondary' ? styles['stepper__step--secondary'] : ''
+            step.status === 'secondary' ? 'stepper__step--secondary' : ''
           } ${
-            step.disabled ? styles['stepper__step--disabled'] : ''
+            step.disabled ? 'stepper__step--disabled' : ''
           }`}
           onClick={() => handleStepClick(index)}
           onKeyDown={(e) => {
@@ -82,11 +82,11 @@ export function Stepper({
           aria-selected={index === activeStep}
           aria-disabled={step.disabled}
         >
-          <div className={styles.stepper__step__number}>{index + 1}</div>
+          <div className={`stepper__step__number`}>{index + 1}</div>
           <div>
-            <div className={styles.stepper__step__title}>{step.title}</div>
+            <div className={`stepper__step__title`}>{step.title}</div>
             {step.description && (
-              <div className={styles.stepper__step__description}>
+              <div className={`stepper__step__description`}>
                 {step.description}
               </div>
             )}

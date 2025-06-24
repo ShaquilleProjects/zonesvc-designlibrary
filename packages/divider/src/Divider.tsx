@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Divider.css';
+import './Divider.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface DividerProps {
@@ -30,25 +30,25 @@ export function Divider({
   const theme = useTheme();
 
   const classes = [
-    styles.divider,
+    'divider',
     className,
-    vertical ? styles['divider--vertical'] : '',
-    dashed ? styles['divider--dashed'] : '',
-    dotted ? styles['divider--dotted'] : '',
-    thick ? styles['divider--thick'] : '',
-    thin ? styles['divider--thin'] : '',
-    type ? styles[`divider--${type}`] : '',
-    noLine ? styles['divider--no-line'] : '',
-    styles[`divider--${justify}`],
+    vertical ? 'divider--vertical' : '',
+    dashed ? 'divider--dashed' : '',
+    dotted ? 'divider--dotted' : '',
+    thick ? 'divider--thick' : '',
+    thin ? 'divider--thin' : '',
+    type ? `divider--${type}` : '',
+    noLine ? 'divider--no-line' : '',
+    `divider--${justify}`,
   ].filter(Boolean).join(' ');
 
   return (
     <div className={classes} role="separator">
-      <div className={styles.divider__line} />
+      <div className="divider__line" />
       {children && (
-        <div className={styles.divider__content}>{children}</div>
+        <div className="divider__content">{children}</div>
       )}
-      <div className={styles.divider__line} />
+      <div className="divider__line" />
     </div>
   );
 }

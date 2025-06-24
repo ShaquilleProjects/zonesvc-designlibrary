@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Switch.css';
+import './Switch.css';
 
 export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -27,9 +27,9 @@ export function Switch({
   ...props
 }: SwitchProps) {
   const classes = [
-    styles.switch,
+    'switch',
     className,
-    styles[`switch--${size}`],
+    `switch--${size}`,
   ].filter(Boolean).join(' ');
 
   return (
@@ -41,7 +41,7 @@ export function Switch({
     >
       <input
         type="checkbox"
-        className={styles.switch__input}
+        className="switch__input"
         checked={props.checked}
         onChange={(e) => {
           if (props.onChange) {
@@ -50,13 +50,15 @@ export function Switch({
         }}
       />
       {label && (
-        <span className={styles.switch__label}>{label}</span>
+        <span className="switch__label">
+          {label}
+        </span>
       )}
-      <span className={styles.switch__control}>
-        <span className={styles.switch__thumb} />
+      <span className="switch__control">
+        <span className="switch__thumb" />
       </span>
       {error && (
-        <div className={styles.switch__error} id={ariaDescribedBy}>
+        <div className="switch__error" id={ariaDescribedBy}>
           {error}
         </div>
       )}

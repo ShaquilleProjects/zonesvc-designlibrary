@@ -1,5 +1,5 @@
 import { forwardRef, ForwardedRef, useImperativeHandle, useRef } from 'react';
-import styles from './Input.module.css';
+import './Input.module.css';
 
 export interface InputProps {
   label?: string;
@@ -50,7 +50,7 @@ export const Input = forwardRef(({
 
   const inputProps: any = {
     ref: inputRef,
-    className: styles.input__input,
+    className: 'input__input',
     ...props,
   };
   if (value !== undefined) {
@@ -65,16 +65,16 @@ export const Input = forwardRef(({
   }
 
   return (
-    <div className={`${styles.input} ${className}`}>
+    <div className={`input ${className}`}>
       {label && (
-        <label className={styles.input__label}>{label}</label>
+        <label className="input__label">{label}</label>
       )}
-      <div className={styles.input__wrapper}>
-        {prefix && <span className={styles.input__prefix}>{prefix}</span>}
+      <div className="input__wrapper">
+        {prefix && <span className="input__prefix">{prefix}</span>}
         <input {...inputProps} />
       </div>
-      {suffix && <span className={styles.input__suffix}>{suffix}</span>}
-      {error && <span className={styles.input__error}>{error}</span>}
+      {suffix && <span className="input__suffix">{suffix}</span>}
+      {error && <span className="input__error">{error}</span>}
     </div>
   );
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Progress.css';
+import './Progress.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface ProgressProps {

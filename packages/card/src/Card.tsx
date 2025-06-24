@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Card.css';
+import './Card.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface CardProps {
@@ -39,47 +39,47 @@ export function Card({
   const hasFooter = actions;
 
   const classes = [
-    styles.card,
+    'card',
     className,
-    elevated ? styles['card--elevated'] : '',
-    bordered ? styles['card--bordered'] : '',
-    rounded ? styles['card--rounded'] : '',
-    fullWidth ? styles['card--full-width'] : '',
-    compact ? styles['card--compact'] : '',
-    hoverable ? styles['card--hoverable'] : '',
+    elevated ? 'card--elevated' : '',
+    bordered ? 'card--bordered' : '',
+    rounded ? 'card--rounded' : '',
+    fullWidth ? 'card--full-width' : '',
+    compact ? 'card--compact' : '',
+    hoverable ? 'card--hoverable' : '',
   ].filter(Boolean).join(' ');
 
   return (
     <div className={classes}>
       {hasHeader && (
-        <div className={styles.card__header}>
+        <div className="card__header">
           {image && overlay ? (
-            <div className={styles.card__image-container}>
-              <img src={image} alt="" className={styles.card__image} />
-              <div className={styles.card__overlay}>
-                <h3 className={styles.card__overlay-title}>{title}</h3>
+            <div className="card__image-container">
+              <img src={image} alt="" className="card__image" />
+              <div className="card__overlay">
+                <h3 className="card__overlay-title">{title}</h3>
                 {subtitle && (
-                  <p className={styles.card__overlay-subtitle}>{subtitle}</p>
+                  <p className="card__overlay-subtitle">{subtitle}</p>
                 )}
               </div>
             </div>
           ) : (
             <>
-              {image && <img src={image} alt="" className={styles.card__image} />}
-              <h3 className={styles.card__title}>{title}</h3>
+              {image && <img src={image} alt="" className="card__image" />}
+              <h3 className="card__title">{title}</h3>
               {subtitle && (
-                <p className={styles.card__subtitle}>{subtitle}</p>
+                <p className="card__subtitle">{subtitle}</p>
               )}
             </>
           )}
         </div>
       )}
 
-      <div className={styles.card__content}>{children}</div>
+      <div className="card__content">{children}</div>
 
       {hasFooter && (
-        <div className={styles.card__footer}>
-          <div className={styles.card__actions}>{actions}</div>
+        <div className="card__footer">
+          <div className="card__actions">{actions}</div>
         </div>
       )}
     </div>

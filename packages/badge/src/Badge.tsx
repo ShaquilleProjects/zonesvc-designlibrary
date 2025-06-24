@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Badge.css';
+import './Badge.css';
 import { useTheme } from '@zone-ui/theme-provider';
 
 interface BadgeProps {
@@ -23,19 +23,19 @@ export function Badge({
   const theme = useTheme();
 
   const classes = [
-    styles.badge,
+    'badge',
     className,
-    styles[`badge--${type}`],
-    variant === 'outline' ? styles['badge--outline'] : '',
-    styles[`badge--${size}`],
-    shape === 'pill' ? styles['badge--pill'] : '',
-    shape === 'dot' ? styles['badge--dot'] : '',
-    Icon ? styles['badge--with-icon'] : '',
+    `badge--${type}`,
+    variant === 'outline' ? 'badge--outline' : '',
+    `badge--${size}`,
+    shape === 'pill' ? 'badge--pill' : '',
+    shape === 'dot' ? 'badge--dot' : '',
+    Icon ? 'badge--with-icon' : '',
   ].filter(Boolean).join(' ');
 
   return (
     <span className={classes} role="status">
-      {Icon && <Icon className={styles.badge__icon} />}
+      {Icon && <Icon className="badge__icon" />}
       {children}
     </span>
   );
